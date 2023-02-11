@@ -30,7 +30,10 @@ public class DoctorController {
             doctorService.añadirPaciente(paciente);
     }
 
-    @PutMapping("paciente{id}")
+    @PutMapping("paciente/{id}")
+    public void modificarPacientePorId(@RequestBody Paciente paciente,@PathVariable int id){
+        doctorService.modificarPacientePorId(id,paciente);
+    }
 
 
 

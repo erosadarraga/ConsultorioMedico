@@ -75,6 +75,8 @@ public class Doctor {
                 paciente.setNombre(nuevoNombre);
                 paciente.setApellido(nuevoApellido);
                 paciente.setEdad(nuevaEdad);
+                System.out.println(paciente);
+                System.out.println(pacientes);
                 break;
             }
         }

@@ -33,7 +33,7 @@ public class DoctorService implements IDoctorService {
 
     @Override
     public void modificarPacientePorId(int idPaciente, Paciente paciente) {
-
+        dr.modificarPacientePorId(idPaciente,paciente.getNombre(), paciente.getApellido(), paciente.getEdad());
     }
 
     ;
