@@ -66,6 +66,10 @@ public class Doctor {
         // lógica para listar el historial médico de un paciente
     }
 
+    public void setHorarioDisponible(Map<String, Horario> horarioDisponible) {
+        this.horarioDisponible = horarioDisponible;
+    }
+
     @Override
     public String toString() {
         return "Doctor{" +

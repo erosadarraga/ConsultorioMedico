@@ -8,6 +8,8 @@ public class Cita {
     private LocalTime horaInicio;
     private LocalTime horaFin;
 
+    private String
+
     public Cita(String paciente, String diaSemana, LocalTime horaInicio, LocalTime horaFin) {
         this.paciente = paciente;
         this.diaSemana = diaSemana;
@@ -46,5 +48,15 @@ public class Cita {
 
     public void setHoraFin(LocalTime horaFin) {
         this.horaFin = horaFin;
+    }
+
+    @Override
+    public String toString() {
+        return "Cita{" +
+                "paciente='" + paciente + '\'' +
+                ", diaSemana='" + diaSemana + '\'' +
+                ", horaInicio=" + horaInicio +
+                ", horaFin=" + horaFin +
+                '}';
     }
 }

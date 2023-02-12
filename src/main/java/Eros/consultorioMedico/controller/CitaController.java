@@ -13,7 +13,10 @@ public class CitaController {
     @Autowired
     private ICitaService iCitaService;
 
-
+    @PostMapping("/agendar/{id}")
+    public String agendarCita(@RequestBody Horario horario,@PathVariable Integer id){
+       return iCitaService.agendarCita(horario,id);
+    };
 
 
 

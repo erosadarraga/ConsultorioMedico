@@ -1,35 +1,37 @@
 package Eros.consultorioMedico.service.cita;
 
-import Eros.consultorioMedico.repository.model.Doctor;
-import Eros.consultorioMedico.repository.model.Horario;
-import Eros.consultorioMedico.repository.model.Paciente;
-import Eros.consultorioMedico.repository.model.TimeSlot;
+import Eros.consultorioMedico.repository.model.*;
 import Eros.consultorioMedico.service.doctor.IDoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.DayOfWeek;
-import java.time.LocalTime;
-import java.util.HashMap;
-import java.util.HashSet;
+
 import java.util.Map;
-import java.util.Set;
+
 
 @Service
-public class CitaService implements ICitaService{
+public class CitaService implements ICitaService {
 
     @Autowired
     private IDoctorService doctorService;
 
 
-
     @Override
-    public void agendarCita(Horario horario, Integer idPaciente) {
-        Map<Integer, Paciente>  pacientes =doctorService.getDortor().getPacientes();
-       Paciente paciente = pacientes.get(idPaciente);
-
-
-
+    public String agendarCita(Horario horario, Integer idPaciente) {
+        Doctor dr = doctorService.getDortor();
+        Map<Integer, Paciente> pacientes = dr.getPacientes();
+        horario.comvertirLocalTime();
+        System.out.println("horario"+horario);
+        Map<String, Horario> horarioDisponible = dr.getHorarioDisponible();
+        AgendaCitas agenda = new AgendaCitas(horarioDisponible);
+        Paciente paciente = pacientes.get(idPaciente);
+        if (agenda.agendarCita(horario)) {
+            Cita citanew = new Cita(paciente.getNombre(), horario.getDay(), horario.getStartTime(), horario.getEndTime());
+            paciente.agregarCitaAlHistorial(citanew);
+            String res=
+            return ";
+        }
+        return "No se pudo agendar cita";
     }
 
     @Override

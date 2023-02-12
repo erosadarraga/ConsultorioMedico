@@ -17,6 +17,7 @@ public class HorarioService {
 
     public String asignarHorarioDoctor(Horario horario) {
         Doctor dr = doctorService.getDortor();
+        System.out.println("doctor horario"+ horario);
         horario.comvertirLocalTime();
         dr.agregarHorarioDisponible(horario.getDay(), horario);
         return "Horario asignado";
