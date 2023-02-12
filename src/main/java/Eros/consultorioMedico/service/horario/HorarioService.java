@@ -7,19 +7,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.DayOfWeek;
+import java.util.Set;
 
 @Service
 public class HorarioService {
 
     @Autowired
-    private IDoctorService doctorService ;
+    private IDoctorService doctorService;
 
-    public String asignarHorarioDoctor(){
-        Doctor dr = doctorService.getDortor((DayOfWeek dia, Set< Horario > horarios);
-        dr.agregarHorarioDisponible();
+    public String asignarHorarioDoctor(Horario horario) {
+        Doctor dr = doctorService.getDortor();
+        horario.comvertirLocalTime();
+        dr.agregarHorarioDisponible(horario.getDay(), horario);
         return "Horario asignado";
-    };
+    }
 
+    ;
 
 
 }

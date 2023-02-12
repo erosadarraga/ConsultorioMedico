@@ -13,10 +13,7 @@ public class CitaController {
     @Autowired
     private ICitaService iCitaService;
 
-    @PostMapping("/horarios")
-    public void establecerHorariosPost(@RequestBody Horario horario) {
-        iCitaService.establecerHorarios(horario);
-    }
+
 
 
 

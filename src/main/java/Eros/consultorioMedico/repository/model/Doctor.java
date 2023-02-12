@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class Doctor {
     private String nombre;
-    private Map<DayOfWeek, Set<Horario>> horarioDisponible;
+    private Map<String, Horario> horarioDisponible;
     private Map<String, Paciente> pacientes;
 
     public Doctor(String nombre) {
@@ -26,7 +26,7 @@ public class Doctor {
         return nombre;
     }
 
-    public Map<DayOfWeek, Set<Horario>> getHorarioDisponible() {
+    public Map<String, Horario> getHorarioDisponible() {
         return horarioDisponible;
     }
 
@@ -46,8 +46,9 @@ public class Doctor {
         pacientes.remove(paciente.getNombre());
     }
 
-    public void agregarHorarioDisponible(DayOfWeek dia, Set<Horario> horarios) {
+    public void agregarHorarioDisponible(String dia, Horario horarios) {
         horarioDisponible.put(dia, horarios);
+        System.out.println(horarioDisponible);
     }
 
     public void aceptarCita(Cita cita) {
@@ -60,5 +61,14 @@ public class Doctor {
 
     public void listarHistorialMedico(Paciente paciente) {
         // lógica para listar el historial médico de un paciente
+    }
+
+    @Override
+    public String toString() {
+        return "Doctor{" +
+                "nombre='" + nombre + '\'' +
+                ", horarioDisponible=" + horarioDisponible +
+                ", pacientes=" + pacientes +
+                '}';
     }
 }
