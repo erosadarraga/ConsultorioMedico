@@ -1,26 +1,26 @@
 package Eros.consultorioMedico.repository.model;
 
 import Eros.consultorioMedico.repository.template.DayOfWeek;
+import Eros.consultorioMedico.repository.template.Persona;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Paciente {
+public class Paciente extends Persona {
     private String nombre;
     private String apellido;
     private int edad;
     private static Integer contadorId = 1;
 
     private Integer id;
-    private String informacionPersonal;
-    private List<Cita> historialCitas;
+    private List<Cita> historialCitas=new ArrayList<Cita>();
 
     public Paciente(String nombre, String apellido, int edad, String informacionPersonal) {
+        super(nombre, apellido);
         this.nombre = nombre;
         this.apellido = apellido;
         this.id = contadorId++;
         this.edad = edad;
-        this.informacionPersonal = informacionPersonal;
         this.historialCitas = new ArrayList<Cita>();
     }
 
@@ -48,13 +48,6 @@ public class Paciente {
         this.edad = edad;
     }
 
-    public String getInformacionPersonal() {
-        return informacionPersonal;
-    }
-
-    public void setInformacionPersonal(String informacionPersonal) {
-        this.informacionPersonal = informacionPersonal;
-    }
 
     public List<Cita> getHistorialCitas() {
         return historialCitas;
@@ -88,7 +81,6 @@ public class Paciente {
                 ", apellido='" + apellido + '\'' +
                 ", edad=" + edad +
                 ", id=" + id +
-                ", informacionPersonal='" + informacionPersonal + '\'' +
                 ", historialCitas=" + historialCitas +
                 '}';
     }

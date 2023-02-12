@@ -38,24 +38,32 @@ public class CitaService implements ICitaService {
 
     @Override
     public void aceptarcita(Integer idpaciente, Integer idcita) {
+        idcita= idcita -1;
         Doctor dr = doctorService.getDortor();
         Map<Integer, Paciente> pacientes = dr.getPacientes();
         Paciente paciente = pacientes.get(idpaciente);
-        List<Cita> citas = paciente.getHistorialCitas();
-        Cita cita = citas.get(idcita);
-        cita.setEstadoCita("Aceptado");
+        if( paciente != null || idcita != null){
+            List<Cita> citas = paciente.getHistorialCitas();
+            Cita cita = citas.get(idcita);
+            cita.setEstadoCita("Aceptado");
+        }
+
     }
 
     ;
 
     @Override
     public void rechazarcita(Integer idpaciente, Integer idcita) {
+        idcita= idcita -1;
         Doctor dr = doctorService.getDortor();
         Map<Integer, Paciente> pacientes = dr.getPacientes();
         Paciente paciente = pacientes.get(idpaciente);
-        List<Cita> citas = paciente.getHistorialCitas();
-        Cita cita = citas.get(idcita);
-        cita.setEstadoCita("Cancelado");
+        if( paciente != null || idcita != null){
+            List<Cita> citas = paciente.getHistorialCitas();
+            Cita cita = citas.get(idcita);
+            cita.setEstadoCita("Cancelado");
+        }
+
     }
 
     ;

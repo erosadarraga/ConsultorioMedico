@@ -39,6 +39,11 @@ public class DoctorService implements IDoctorService {
 
     }
 
+    @Override
+    public void deletePacientePorId(int idPaciente) {
+        dr.eliminarPaciente(idPaciente);
+    }
+
 
     @Override
     public List<Paciente> getListPacientes() {

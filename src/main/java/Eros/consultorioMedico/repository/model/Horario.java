@@ -1,9 +1,8 @@
 package Eros.consultorioMedico.repository.model;
 
 import java.time.LocalTime;
-import java.util.Date;
 
-public class Horario {
+public class Horario  {
     private LocalTime startTime;
     private LocalTime endTime;
     private int horacomienzo;

@@ -1,12 +1,7 @@
 package Eros.consultorioMedico.repository.model;
 
-import Eros.consultorioMedico.repository.model.Paciente;
-import Eros.consultorioMedico.repository.model.TimeSlot;
-
-import java.time.DayOfWeek;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class Doctor {
     private String nombre;
@@ -44,8 +39,8 @@ public class Doctor {
         System.out.println(pacientes);
     }
 
-    public void eliminarPaciente(Paciente paciente) {
-        pacientes.remove(paciente.getNombre());
+    public void eliminarPaciente(Integer id) {
+        pacientes.remove(id);
         System.out.println(pacientes);
     }
 

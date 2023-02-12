@@ -32,6 +32,12 @@ public class DoctorController {
         doctorService.modificarPacientePorId(id,paciente);
     }
 
+    @DeleteMapping("paciente/{id}")
+    public void deletePacientePorId(@PathVariable Integer id){
+        doctorService.deletePacientePorId(id);
+    }
+
+
 
 
 }

@@ -15,6 +15,7 @@ public interface IDoctorService {
     public  void añadirPaciente(Paciente paciente);
 
     public void modificarPacientePorId(int idPaciente, Paciente paciente);
+    public void deletePacientePorId(int idPaciente);
 
     public List<Paciente> getListPacientes();
     public Doctor getDortor();
