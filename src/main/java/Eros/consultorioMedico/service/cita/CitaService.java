@@ -67,7 +67,7 @@ public class CitaService implements ICitaService {
     }
 
     ;
-
+    @Override
     public List<Cita> listarHistorial(Integer idpaciente) {
         Doctor dr = doctorService.getDortor();
         Map<Integer, Paciente> pacientes = dr.getPacientes();
