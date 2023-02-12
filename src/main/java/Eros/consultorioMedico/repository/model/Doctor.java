@@ -1,92 +1,64 @@
 package Eros.consultorioMedico.repository.model;
 
-import java.time.LocalTime;
-import java.util.ArrayList;
+import Eros.consultorioMedico.repository.model.Paciente;
+import Eros.consultorioMedico.repository.model.TimeSlot;
+
+import java.time.DayOfWeek;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Doctor {
-    private static int idCounter = 1;
-    private int id;
-    private String name;
-    private Map<String, Horario> Horarios = new HashMap<>();
-    private List<Paciente> pacientes;
-    private static int contadorIdPaciente = 1;
+    private String nombre;
+    private Map<DayOfWeek, Set<Horario>> horarioDisponible;
+    private Map<String, Paciente> pacientes;
 
-
-    public Doctor(String name) {
-        this.name = name;
-        this.id = idCounter++;
-        this.pacientes = new ArrayList<Paciente>();
-
-    }
-
-    public void setAvailability(String day, LocalTime startTime, LocalTime endTime) {
-        this.Horarios.put(day, new Horario(startTime, endTime));
-
+    public Doctor(String nombre) {
+        this.nombre = nombre;
+        this.horarioDisponible = new HashMap<>();
+        this.pacientes = new HashMap<>();
     }
 
     public Doctor() {
     }
 
-    public Map<String, Horario> getAvailability() {
-
-        return Horarios;
+    public String getNombre() {
+        return nombre;
     }
 
-    public Horario getAvailability(String day) {
-        return Horarios.get(day);
-    }
-    public void agregarPaciente(Paciente paciente) {
-        paciente.setId(contadorIdPaciente++);
-        this.pacientes.add(paciente);
-        System.out.println(paciente.toString());
-        System.out.println(pacientes);
+    public Map<DayOfWeek, Set<Horario>> getHorarioDisponible() {
+        return horarioDisponible;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Map<String, Horario> getHorarios() {
-        return Horarios;
-    }
-
-    public void setHorarios(Map<String, Horario> horarios) {
-        Horarios = horarios;
-    }
-
-    public List<Paciente> getPacientes() {
+    public Map<String, Paciente> getPacientes() {
         return pacientes;
     }
 
-    public void setPacientes(List<Paciente> pacientes) {
-        this.pacientes = pacientes;
+    public void agregarPaciente(Paciente paciente) {
+        pacientes.put(paciente.getNombre(), paciente);
     }
 
-    public void modificarPacientePorId(int idPaciente, String nuevoNombre, String nuevoApellido, int nuevaEdad) {
-        for (Paciente paciente : this.pacientes) {
-            if (paciente.getId() == idPaciente) {
-                paciente.setNombre(nuevoNombre);
-                paciente.setApellido(nuevoApellido);
-                paciente.setEdad(nuevaEdad);
-                System.out.println(paciente);
-                System.out.println(pacientes);
-                break;
-            }
-        }
+    public void modificarPaciente(Paciente paciente) {
+        pacientes.put(paciente.getNombre(), paciente);
     }
 
-    @Override
-    public String toString() {
-        return "Doctor{" +
-                "name='" + name + '\'' +
-                ", Horarios=" + Horarios +
-                '}';
+    public void eliminarPaciente(Paciente paciente) {
+        pacientes.remove(paciente.getNombre());
+    }
+
+    public void agregarHorarioDisponible(DayOfWeek dia, Set<Horario> horarios) {
+        horarioDisponible.put(dia, horarios);
+    }
+
+    public void aceptarCita(Cita cita) {
+        // lógica para aceptar la cita
+    }
+
+    public void cancelarCita(Cita cita) {
+        // lógica para cancelar la cita
+    }
+
+    public void listarHistorialMedico(Paciente paciente) {
+        // lógica para listar el historial médico de un paciente
     }
 }

@@ -1,24 +1,23 @@
 package Eros.consultorioMedico.repository.model;
 
+import Eros.consultorioMedico.repository.template.DayOfWeek;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Paciente {
-    private static int idCounter = 1;
-    private int id;
     private String nombre;
     private String apellido;
     private int edad;
+    private String informacionPersonal;
+    private List<Cita> historialCitas;
 
-    public Paciente(String nombre, String apellido, int edad) {
-        this.id = idCounter++;
+    public Paciente(String nombre, String apellido, int edad, String informacionPersonal) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
-    }
-
-    public Paciente() {
-    }
-
-    public int getId() {
-        return id;
+        this.informacionPersonal = informacionPersonal;
+        this.historialCitas = new ArrayList<Cita>();
     }
 
     public String getNombre() {
@@ -37,18 +36,6 @@ public class Paciente {
         this.apellido = apellido;
     }
 
-    public static int getIdCounter() {
-        return idCounter;
-    }
-
-    public static void setIdCounter(int idCounter) {
-        Paciente.idCounter = idCounter;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public int getEdad() {
         return edad;
     }
@@ -57,13 +44,23 @@ public class Paciente {
         this.edad = edad;
     }
 
-    @Override
-    public String toString() {
-        return "Paciente{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", edad=" + edad +
-                '}';
+    public String getInformacionPersonal() {
+        return informacionPersonal;
+    }
+
+    public void setInformacionPersonal(String informacionPersonal) {
+        this.informacionPersonal = informacionPersonal;
+    }
+
+    public List<Cita> getHistorialCitas() {
+        return historialCitas;
+    }
+
+    public void agregarCitaAlHistorial(Cita cita) {
+        this.historialCitas.add(cita);
+    }
+
+    public void eliminarCitaDelHistorial(Cita cita) {
+        this.historialCitas.remove(cita);
     }
 }

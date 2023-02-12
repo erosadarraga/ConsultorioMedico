@@ -15,10 +15,7 @@ public class DoctorController {
     @Autowired
     private IDoctorService doctorService;
 
-    @PostMapping("/horarios")
-    public void establecerHorariosPost(@RequestBody Horario horario) {
-        doctorService.establecerHorarios(horario);
-    }
+
 
     @GetMapping("/horarios")
     public Map<String, Horario> listarHorarios() {

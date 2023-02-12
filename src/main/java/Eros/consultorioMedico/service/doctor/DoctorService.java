@@ -6,37 +6,36 @@ import Eros.consultorioMedico.repository.model.Paciente;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Map;
 
 @Service
 public class DoctorService implements IDoctorService {
     Doctor dr = new Doctor("Dr. Ramiro Fernandez");
 
-    @Override
-    public void establecerHorarios(Horario horario) {
-        System.out.println(horario);
-        if ( horario != null) {
-            dr.setAvailability(horario.getDay(), LocalTime.of(horario.getHoracomienzo(), 0), LocalTime.of(horario.getHoraFinal(), 0));
-        }
 
+    public Doctor getDortor(){
+        return dr;
     }
+
 
     @Override
     public Map<String, Horario> listarHorarios() {
-        return dr.getAvailability();
+        return null;
     }
 
     @Override
     public void añadirPaciente(Paciente paciente) {
-        dr.agregarPaciente(paciente);
+
     }
 
     @Override
     public void modificarPacientePorId(int idPaciente, Paciente paciente) {
-        dr.modificarPacientePorId(idPaciente,paciente.getNombre(), paciente.getApellido(), paciente.getEdad());
+
     }
 
-    ;
-
-
+    @Override
+    public List<Paciente> getListPacientes() {
+        return null;
+    }
 }
