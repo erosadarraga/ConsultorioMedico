@@ -12,14 +12,14 @@ import java.util.Map;
 @Service
 public class DoctorService implements IDoctorService {
     Doctor dr = new Doctor("Dr. Ramiro Fernandez");
-    Map<String, Paciente> pacientes = dr.getPacientes();
+    Map<Integer, Paciente> pacientes = dr.getPacientes();
 
 
     public Doctor getDortor() {
         return dr;
     }
 
-    public Map<String, Paciente> ListaPacientes() {
+    public Map<Integer, Paciente> ListaPacientes() {
         return pacientes;
     }
 
@@ -35,7 +35,8 @@ public class DoctorService implements IDoctorService {
 
     @Override
     public void modificarPacientePorId(int idPaciente, Paciente paciente) {
-        dr.modificarPaciente(paciente);
+        dr.modificarPaciente(idPaciente,paciente);
+
     }
 
     @Override

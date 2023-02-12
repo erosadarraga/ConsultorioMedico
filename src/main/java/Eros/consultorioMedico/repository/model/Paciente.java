@@ -9,9 +9,9 @@ public class Paciente {
     private String nombre;
     private String apellido;
     private int edad;
-    private static long contadorId = 1;
+    private static Integer contadorId = 1;
 
-    private Long id;
+    private Integer id;
     private String informacionPersonal;
     private List<Cita> historialCitas;
 
@@ -68,12 +68,13 @@ public class Paciente {
         this.historialCitas.remove(cita);
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public Integer setId(Integer id) {
         this.id = id;
+        return id;
     }
 
     public void setHistorialCitas(List<Cita> historialCitas) {

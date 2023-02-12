@@ -11,12 +11,12 @@ import java.util.Set;
 public class Doctor {
     private String nombre;
     private Map<String, Horario> horarioDisponible;
-    private Map<String, Paciente> pacientes;
+    private Map<Integer, Paciente> pacientes;
 
     public Doctor(String nombre) {
         this.nombre = nombre;
         this.horarioDisponible = new HashMap<>();
-        this.pacientes = new HashMap<>();
+        this.pacientes = new HashMap<Integer, Paciente>();
     }
 
     public Doctor() {
@@ -30,18 +30,18 @@ public class Doctor {
         return horarioDisponible;
     }
 
-    public Map<String, Paciente> getPacientes() {
+    public Map<Integer, Paciente> getPacientes() {
         return pacientes;
     }
 
     public void agregarPaciente(Paciente paciente) {
-        pacientes.put(paciente.getNombre(), paciente);
+        pacientes.put(paciente.getId(), paciente);
         System.out.println(pacientes);
     }
 
-    public void modificarPaciente(Paciente paciente,int id) {
-        pacientes.
-        pacientes.put(paciente.getNombre(), paciente);
+    public void modificarPaciente( Integer id, Paciente nuevoPaciente) {
+        pacientes.put(id, nuevoPaciente);
+        System.out.println(pacientes);
     }
 
     public void eliminarPaciente(Paciente paciente) {
