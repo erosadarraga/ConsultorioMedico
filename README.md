@@ -29,101 +29,92 @@
 ### Establecer un horario de disponibilidad por día de la semana.
 | Url | Método | 
 |----|----|
-| `/api/api/horario/asignar` | `post` |
+| `/api/horario/asignar` | `post` |
 
-Tipo (Destino)
+Tipo (Horario)
 ```json
 {
-  "nombreDestino": "String",
-  "departamento": "String",
-  "ciudad": "String"
+  "day": "martes",
+  "horacomienzo": 6,
+  "horaFinal":10,
+  "minutocomienzo":20,
+  "minutofinal":30
+}
+```
+###  Agregar un paciente nuevo 
+| Url | Método | 
+|----|----|
+| `/api/doctor/paciente` | `post` |
+
+Tipo (Paciente)
+```json
+{
+    "nombre": "eros",
+    "apellido": "adarraga",
+    "edad": 23
 }
 ```
 
-### Listar destino
+###  Modificar la información personal del paciente
 | Url | Método | 
 |----|----|
-| `/api/destino/listar` | `get` |
+| `/api/doctor/paciente/{id}` | `put` |
+
+Tipo (Paciente)
+```json
+{
+    "nombre": "juan",
+    "apellido": "sevallos",
+    "edad": 26
+}
+```
+
+###  Agendar citas pero sólo en los horarios disponibles
+| Url | Método | 
+|----|----|
+| `/api//api/cita/agendar/{idpaciente}` | `post` |
+
+Tipo (Horario)
+```json
+{
+  "day": "martes",
+  "horacomienzo": 6,
+  "horaFinal":7,
+  "minutocomienzo":30,
+  "minutofinal":20
+}
+```
+
+###  Que le permita al doctor aceptar citas
+| Url | Método | 
+|----|----|
+| `/api/cita/aceptar/{idpaciente}/{idcita}` | `post` |
+
+###  Que le permita al doctor rechazar citas
+| Url | Método | 
+|----|----|
+| `/api/cita/rechazar/{idpaciente}/{idcita}` | `post` |
+
+
+### Listar todo el historial médico
+| Url | Método | 
+|----|----|
+| `/api/cita/historialclinico/{idpaciente}` | `get` |
+
+### Listar todo el historial médico
+| Url | Método | 
+|----|----|
+| `/api/cita/historialclinico/{idpaciente}` | `get` |
 
 ---
-
-### Registrar bus
+###  Eliminar pacientes
 | Url | Método | 
 |----|----|
-| `/api/bus/guardar` | `post` |
-
-Tipo (Vehiculo)
-```json
-{
-  "placa": "String",
-  "tipo": "String"
-}
-```
-
-### Listar buses
-| Url | Método | 
-|----|----|
-| `/api/bus/listar` | `get` |
-
----
-
-### Asignar un conductor al bus
-| Url | Método | 
-|----|----|
-| `/api/bus/asignar/{placa}` | `put` |
-
-Tipo (Vehiculo)
-```json
-{
-  "nombre": "String",
-  "apellido": "String",
-  "cedula": "String",
-  "telefono": int,
-  "numeroLicencia": "String"
-}
-```
-
----
-
-### Registrar viaje
-| Url | Método | 
-|----|----|
-| `/api/viaje/guardar/{idDestino}/{idBus}` | `post` |
-
-Tipo (Viaje)
-```json
-{
-  "hora": "String"
-}
-```
-
-### Listar viaje
-| Url | Método | 
-|----|----|
-| `/api/viaje/listar` | `get` |
-
----
-
-### Ingresar pasajeros al bus
-| Url | Método | 
-|----|----|
-| `/api/viaje/ingresar-pasajero/{idViaje}` | `post` |
-
-Tipo (Viaje)
-
-```json
-{
-  "nombre": "String",
-  "apellido": "String",
-  "cedula": "String",
-  "telefono": int,
-  "numeroMaletas": int
-}
-```
+| `/api/doctor/paciente/{idpaciente}` | `delete` |
 
 ---
 
 ## Patrones de diseño aplicados
 
-- Singleton: Se aplicó en la clase "TerminalTransporteRepository", con el fin de que no se crearan muchas terminales de transporte sino solo una.
-- Factory Method: Se aplicó por medio de la creación de las interfaces "IRepository" y "IVehiculo".
+- Singleton: Se aplicó en las carpetas service con el decorador @Service para instanciar una solo vez los servicios en los controladore 
+- Factory Method: Se aplicó por medio de la creación de las interfaces "ICitaService","IDoctorService" y "IHoarioServicio"
