@@ -36,14 +36,17 @@ public class Doctor {
 
     public void agregarPaciente(Paciente paciente) {
         pacientes.put(paciente.getNombre(), paciente);
+        System.out.println(pacientes);
     }
 
-    public void modificarPaciente(Paciente paciente) {
+    public void modificarPaciente(Paciente paciente,int id) {
+        pacientes.
         pacientes.put(paciente.getNombre(), paciente);
     }
 
     public void eliminarPaciente(Paciente paciente) {
         pacientes.remove(paciente.getNombre());
+        System.out.println(pacientes);
     }
 
     public void agregarHorarioDisponible(String dia, Horario horarios) {

@@ -9,12 +9,16 @@ public class Paciente {
     private String nombre;
     private String apellido;
     private int edad;
+    private static long contadorId = 1;
+
+    private Long id;
     private String informacionPersonal;
     private List<Cita> historialCitas;
 
     public Paciente(String nombre, String apellido, int edad, String informacionPersonal) {
         this.nombre = nombre;
         this.apellido = apellido;
+        this.id = contadorId++;
         this.edad = edad;
         this.informacionPersonal = informacionPersonal;
         this.historialCitas = new ArrayList<Cita>();
@@ -62,5 +66,29 @@ public class Paciente {
 
     public void eliminarCitaDelHistorial(Cita cita) {
         this.historialCitas.remove(cita);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setHistorialCitas(List<Cita> historialCitas) {
+        this.historialCitas = historialCitas;
+    }
+
+    @Override
+    public String toString() {
+        return "Paciente{" +
+                "nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", edad=" + edad +
+                ", id=" + id +
+                ", informacionPersonal='" + informacionPersonal + '\'' +
+                ", historialCitas=" + historialCitas +
+                '}';
     }
 }
