@@ -39,6 +39,7 @@ public class DoctorService implements IDoctorService {
 
     }
 
+
     @Override
     public List<Paciente> getListPacientes() {
         return null;

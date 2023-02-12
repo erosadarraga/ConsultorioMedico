@@ -7,14 +7,25 @@ public class Cita {
     private String diaSemana;
     private LocalTime horaInicio;
     private LocalTime horaFin;
+    private static Integer contadorId = 1;
 
-    private String
+    private Integer id;
+    private String estadoCita= "En espera ";
 
     public Cita(String paciente, String diaSemana, LocalTime horaInicio, LocalTime horaFin) {
         this.paciente = paciente;
         this.diaSemana = diaSemana;
         this.horaInicio = horaInicio;
+        this.id = contadorId++;
         this.horaFin = horaFin;
+    }
+
+    public String getEstadoCita() {
+        return estadoCita;
+    }
+
+    public void setEstadoCita(String estadoCita) {
+        this.estadoCita = estadoCita;
     }
 
     public String getPaciente() {
@@ -25,6 +36,9 @@ public class Cita {
         this.paciente = paciente;
     }
 
+    public String  retorno(){
+        return "Cita agendada a las :"+this.horaInicio.toString()+" hasta las "+this.horaFin.toString();
+    }
 
     public String getDiaSemana() {
         return diaSemana;
@@ -57,6 +71,8 @@ public class Cita {
                 ", diaSemana='" + diaSemana + '\'' +
                 ", horaInicio=" + horaInicio +
                 ", horaFin=" + horaFin +
+                ", id=" + id +
+                ", estadoCita='" + estadoCita + '\'' +
                 '}';
     }
 }

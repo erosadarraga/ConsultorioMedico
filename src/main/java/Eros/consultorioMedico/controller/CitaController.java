@@ -18,7 +18,17 @@ public class CitaController {
        return iCitaService.agendarCita(horario,id);
     };
 
+    @PostMapping("/aceptar/{idpaciente}/{idcita}")
+    public int aceptarCita(@PathVariable Integer idpaciente, Integer idcita){
+        iCitaService.aceptarcita(idpaciente,idcita);
+        return idpaciente+idpaciente;
+    }
 
+    @PostMapping("/aceptar/{idpaciente}/{idcita}")
+    public int cancelarCita(@PathVariable Integer idpaciente, Integer idcita){
+        iCitaService.rechazarcita(idpaciente,idcita);
+        return idpaciente+idpaciente;
+    }
 
 
 }

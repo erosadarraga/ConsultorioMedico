@@ -10,11 +10,11 @@ import java.time.DayOfWeek;
 import java.util.Set;
 
 @Service
-public class HorarioService {
+public class HorarioService implements  IHoarioServicio{
 
     @Autowired
     private IDoctorService doctorService;
-
+    @Override
     public String asignarHorarioDoctor(Horario horario) {
         Doctor dr = doctorService.getDortor();
         System.out.println("doctor horario"+ horario);
