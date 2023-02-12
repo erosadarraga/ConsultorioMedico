@@ -6,6 +6,8 @@
 > 1. Posterior a clonar este repositorio en su ordenador, presionar clic derecho en el archivo "ConsultorioMedicoApplication".
 > 2. Presionar la opción Run.
 
+---
+
 ### Desarrollo del proyecto
 > 1. Identificar los requerimientos: El objetivo es crear una clase Agenda de citas para un consultorio médico. La clase debe permitir agendar citas para pacientes y verificar la disponibilidad de horarios.
 > 2. Crear una clase Paciente: Esta clase debe tener atributos como nombre, apellido, identificación, y fecha de nacimiento. También puedes agregar métodos para obtener y establecer estos valores
@@ -14,6 +16,7 @@
 > 5. Crear una clase AgendaCitas: Esta clase debe tener un atributo Map<String, Horario> horarioDisponible y un método para agendar citas que reciba como parámetro un objeto de la clase Cita.
 > 6. Probar la clase AgendaCitas: Crea objetos de la clase Paciente, Cita y Horario, y utiliza el método de agendar citas de la clase AgendaCitas para verificar que todo funciona correctamente.
 
+---
 
 ### Estructura de las carpetas
 > - clases: Clases abstractas o plantillas para la creación de clases complejas.
@@ -41,6 +44,8 @@ Tipo (Horario)
   "minutofinal":30
 }
 ```
+---
+
 ###  Agregar un paciente nuevo 
 | Url | Método | 
 |----|----|
@@ -54,6 +59,7 @@ Tipo (Paciente)
     "edad": 23
 }
 ```
+---
 
 ###  Modificar la información personal del paciente
 | Url | Método | 
@@ -68,6 +74,7 @@ Tipo (Paciente)
     "edad": 26
 }
 ```
+---
 
 ###  Agendar citas pero sólo en los horarios disponibles
 | Url | Método | 
@@ -84,22 +91,28 @@ Tipo (Horario)
   "minutofinal":20
 }
 ```
+---
 
 ###  Que le permita al doctor aceptar citas
 | Url | Método | 
 |----|----|
 | `/api/cita/aceptar/{idpaciente}/{idcita}` | `post` |
 
+---
+
 ###  Que le permita al doctor rechazar citas
 | Url | Método | 
 |----|----|
 | `/api/cita/rechazar/{idpaciente}/{idcita}` | `post` |
 
+---
 
 ### Listar todo el historial médico
 | Url | Método | 
 |----|----|
 | `/api/cita/historialclinico/{idpaciente}` | `get` |
+
+---
 
 ### Listar todo el historial médico
 | Url | Método | 
